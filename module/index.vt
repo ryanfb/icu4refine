@@ -1,0 +1,22 @@
+#*
+ * Access this page at the URL /extension/icu4refine/
+ *#
+<html>
+  <head>
+    <title>ICU4Refine Extension</title>
+  </head>
+  <body>
+    <h1>ICU4Refine</h1>
+
+    <p>ICU4Refine is a simple <a href="http://userguide.icu-project.org/transforms/general">ICU Transliteration</a> extension for <a href="http://openrefine.org/">OpenRefine</a>.</p>
+
+    <p>It adds the <a href="https://github.com/OpenRefine/OpenRefine/wiki/Google-refine-expression-language">GREL</a> string function:</p>
+
+    <pre><code>transliterate(string transform, string input)
+    </code></pre>
+
+    <p>Which will return <code>input</code> transliterated according to the rules in conversion rules in <code>transform</code>.</p>
+
+    <p>For example, <code>transliterate("NFC; Greek-Latin; NFD; [:Nonspacing Mark:] Remove; NFC","μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος")</code> will return <code>"menin aeide thea Peleiadeo Achileos"</code>.</p>
+  </body>
+</html>
