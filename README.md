@@ -7,7 +7,7 @@ It adds the [GREL](https://github.com/OpenRefine/OpenRefine/wiki/Google-refine-e
 
     transliterate(string transform, string input)
 
-Which will return `input` transliterated according to the rules in conversion rules in `transform`.
+Which will return `input` transliterated according to the conversion rules in `transform`.
 
 For example, `transliterate("NFC; Greek-Latin; NFD; [:Nonspacing Mark:] Remove; NFC","μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος")` will return `"menin aeide thea Peleiadeo Achileos"`.
 
