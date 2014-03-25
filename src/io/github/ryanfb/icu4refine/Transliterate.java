@@ -9,16 +9,23 @@ import com.google.refine.expr.EvalError;
 import com.google.refine.grel.ControlFunctionRegistry;
 import com.google.refine.grel.Function;
 
+import com.ibm.icu.text.Transliterator;
+
 public class Transliterate implements Function {
 
     public Object call(Properties bindings, Object[] args) {
         if(args.length==2){
             String transform = args[0].toString();
             String input = args[1].toString();
-            if(input.isEmpty()){
-            	return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " Cannot transliterate empty string");
+            Transliterator transliterator = null;
+            
+            try {
+                transliterator = Transliterator.getInstance(transform);
             }
-            return input;
+            catch (java.lang.IllegalArgumentException e) {
+                return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " transform string error: " + e.getMessage());
+            }
+            return transliterator.transliterate(input);
         }
         return new EvalError(ControlFunctionRegistry.getFunctionName(this) + " expects 2 strings");
     }
